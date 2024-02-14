@@ -14,6 +14,18 @@ return [
                     'scheme' => 'bearer',
                     'bearerFormat' => 'JWT',
                 ],
+                'sanctum' => [
+                    'type' => 'apiKey',
+                    'name' => 'Authorization',
+                    'in' => 'header',
+                    'description' => 'Enter token in format (Bearer <token>)',
+                ],
+            ],
+            'security' => [
+                [
+                    'bearerAuth' => [],
+                    'sanctum' => [],
+                ],
             ],
 
             'routes' => [

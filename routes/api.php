@@ -16,31 +16,36 @@ use App\Http\Controllers\AuthenticatedSessionController;
 |
 */
 
+// Rotas de Autenticação
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
-Route::get('/empresas', [EmpresaController::class, 'index']);
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::middleware('auth:sanctum')->get('/version', function () {
+// Rota para obter a versão do Laravel
+Route::get('/version', function () {
     $laravel = app();
     return "Laravel na versao:". $laravel::VERSION;
 });
 
-Route::middleware(['auth:sanctum'])->group(function () {
+// Rotas protegidas pelo middleware 'auth:sanctum'
+Route::middleware('auth:sanctum')->group(function () {
 
-    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
-    // Rotas relacionadas à empresa
-    // Route::get('/empresas', [EmpresaController::class, 'index']);
-    Route::get('/empresas/{id}', [EmpresaController::class, 'show']);
-    Route::get('/empresas/create', [EmpresaController::class, 'create']);
-    Route::post('/empresas', [EmpresaController::class, 'store']);
-    Route::get('/empresas/{id}/edit', [EmpresaController::class, 'edit']);
-    Route::put('/empresas/{id}', [EmpresaController::class, 'update']);
-    Route::delete('/empresas/{id}', [EmpresaController::class, 'destroy']);
+    // Rota para obter informações do usuário autenticado
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+    // Grupo de rotas relacionadas a Empresas
+    Route::prefix('/empresas')->group(function () {
+        Route::get('/', [EmpresaController::class, 'index']);
+        Route::post('/', [EmpresaController::class, 'store']);
+        Route::put('/{id}', [EmpresaController::class, 'update']);
+        Route::delete('/{id}', [EmpresaController::class, 'destroy']);
+        Route::get('/{id}', [EmpresaController::class, 'show']);
+    });
+
+    // Grupo de rotas relacionadas a Pessoas
+    Route::prefix('/pessoa')->group(function () {
+        Route::get('/', [EmpresaController::class, 'getPessoa']);
+        // Adicione outras rotas de Pessoa conforme necessário
+    });
+
 });
-
-// PESSOA 
-Route::get('/pessoa', [EmpresaController::class, 'getPessoa']);

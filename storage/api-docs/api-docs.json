@@ -92,7 +92,199 @@
                     "200": {
                         "description": "Sucesso"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Empresa"
+                ],
+                "summary": "Adiciona uma nova empresa",
+                "operationId": "b400bda696995ef09cec01e24e345e39",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nome": {
+                                        "description": "Nome da empresa",
+                                        "type": "string"
+                                    },
+                                    "cnpj_cpf": {
+                                        "description": "CNPJ da empresa",
+                                        "type": "string"
+                                    },
+                                    "cor_tema": {
+                                        "description": "Cor do tema da empresa",
+                                        "type": "string"
+                                    },
+                                    "data_cadastro": {
+                                        "description": "Data de cadastro da empresa",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "data_encerramento": {
+                                        "description": "Data de encerramento da empresa",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "situacao_empresa": {
+                                        "description": "Situação da empresa",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Empresa adicionada com sucesso"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/empresas/{id}": {
+            "get": {
+                "tags": [
+                    "Empresa"
+                ],
+                "summary": "Retorna detalhes de uma empresa específica",
+                "operationId": "01cf4a33a64fd815d116b70387a19e57",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da empresa a ser recuperada",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Empresa"
+                ],
+                "summary": "Edita uma empresa existente",
+                "operationId": "d6113af3348fcbc0ad3ca2ed8ce6e89e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da empresa a ser editada",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nome": {
+                                        "description": "Nome da empresa",
+                                        "type": "string"
+                                    },
+                                    "cnpj_cpf": {
+                                        "description": "CNPJ da empresa",
+                                        "type": "string"
+                                    },
+                                    "cor_tema": {
+                                        "description": "Cor do tema da empresa",
+                                        "type": "string"
+                                    },
+                                    "data_cadastro": {
+                                        "description": "Data de cadastro da empresa",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "data_encerramento": {
+                                        "description": "Data de encerramento da empresa",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "situacao_empresa": {
+                                        "description": "Situação da empresa",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Empresa editada com sucesso"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Empresa"
+                ],
+                "summary": "Deleta uma empresa",
+                "operationId": "b8ac3362ec3de93acdd573849c335811",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da empresa a ser deletada",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Empresa deletada com sucesso"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
             }
         }
     }
