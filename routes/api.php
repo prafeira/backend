@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\PessoaController;
+use App\Http\Controllers\VendaController;
 use App\Http\Controllers\AuthenticatedSessionController;
 
 /*
@@ -55,4 +56,13 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/{id}', [PessoaController::class, 'show']);
     });
 
+
+    // Grupo de rotas relacionadas a Vendas
+    Route::prefix('/vendas')->group(function () {
+        Route::get('/', [VendaController::class, 'index']);
+        Route::post('/', [VendaController::class, 'store']);
+        Route::put('/{id}', [VendaController::class, 'update']);
+        Route::delete('/{id}', [VendaController::class, 'destroy']);
+        Route::get('/{id}', [VendaController::class, 'show']);
+    });
 });

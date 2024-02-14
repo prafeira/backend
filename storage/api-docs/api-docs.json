@@ -624,6 +624,212 @@
                     }
                 ]
             }
+        },
+        "/api/vendas": {
+            "get": {
+                "tags": [
+                    "Venda"
+                ],
+                "summary": "Retorna vendas",
+                "operationId": "140f832df05ce79d842cf2df624fefa0",
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Venda"
+                ],
+                "summary": "Adiciona uma nova venda",
+                "operationId": "5d5dcc02258b51ed03fad16c2c5b14ba",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "valor": {
+                                        "description": "Valor da venda",
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "forma_pagamento_id": {
+                                        "description": "ID da forma de pagamento",
+                                        "type": "integer"
+                                    },
+                                    "situacao_pagamento": {
+                                        "description": "Situação de pagamento",
+                                        "type": "integer"
+                                    },
+                                    "data_registro": {
+                                        "description": "Data de registro da venda",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "pessoa_id": {
+                                        "description": "ID da pessoa relacionada à venda",
+                                        "type": "integer"
+                                    },
+                                    "empresa_id": {
+                                        "description": "ID da empresa relacionada à venda",
+                                        "type": "integer"
+                                    },
+                                    "desconto": {
+                                        "description": "Desconto aplicado à venda",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Venda adicionada com sucesso"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/vendas/{id}": {
+            "get": {
+                "tags": [
+                    "Venda"
+                ],
+                "summary": "Retorna detalhes de uma venda específica",
+                "operationId": "bc8175996429a7fb4979ba08e8d31b19",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da venda a ser recuperada",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Venda"
+                ],
+                "summary": "Edita uma venda existente",
+                "operationId": "a5783a574bca24c48fbf49191f3ea373",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da venda a ser editada",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "valor": {
+                                        "description": "Valor da venda",
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "forma_pagamento_id": {
+                                        "description": "ID da forma de pagamento",
+                                        "type": "integer"
+                                    },
+                                    "situacao_pagamento": {
+                                        "description": "Situação de pagamento",
+                                        "type": "integer"
+                                    },
+                                    "data_registro": {
+                                        "description": "Data de registro da venda",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "pessoa_id": {
+                                        "description": "ID da pessoa relacionada à venda",
+                                        "type": "integer"
+                                    },
+                                    "empresa_id": {
+                                        "description": "ID da empresa relacionada à venda",
+                                        "type": "integer"
+                                    },
+                                    "desconto": {
+                                        "description": "Desconto aplicado à venda",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Venda editada com sucesso"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Venda"
+                ],
+                "summary": "Deleta uma venda",
+                "operationId": "d74b58c6172985b1ecb3eda4b9e2cb2e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da venda a ser deletada",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Venda deletada com sucesso"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
         }
     },
     "components": {

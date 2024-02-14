@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('venda', function (Blueprint $table) {
             $table->id();
             $table->integer('valor');
-            $table->integer('forma_pagamento_id');
+            $table->unsignedBigInteger('forma_pagamento_id');
             $table->integer('situacao_pagamento');
             $table->date('data_registro')->nullable();
             $table->unsignedBigInteger('pessoa_id');
@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('desconto');
             $table->foreign('empresa_id')->references('id')->on('empresa');
             $table->foreign('pessoa_id')->references('id')->on('pessoa');
+            $table->foreign('forma_pagamento_id')->references('id')->on('forma_pagamento');
             $table->timestamps();
         });
     }
