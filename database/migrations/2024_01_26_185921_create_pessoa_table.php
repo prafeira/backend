@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->integer('cpf');
-            $table->integer('funcao_id');
+            $table->unsignedBigInteger('funcao_id');
             $table->integer('comissao');
             $table->string('telefone');
             $table->date('data_admissao');
@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->foreign('empresa_id')->references('id')->on('empresa');
+            $table->foreign('funcao_id')->references('id')->on('funcao');
         });
     }
 

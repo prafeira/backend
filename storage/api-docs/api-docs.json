@@ -415,6 +415,79 @@
                 ]
             }
         },
+        "/api/cadastro": {
+            "post": {
+                "tags": [
+                    "Pessoa"
+                ],
+                "summary": "Adiciona Primeiro cadastro",
+                "operationId": "ab049986bd9c0653f47fa4ee4bc95a02",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nome": {
+                                        "description": "Nome da pessoa",
+                                        "type": "string"
+                                    },
+                                    "cpf": {
+                                        "description": "CPF da pessoa",
+                                        "type": "string"
+                                    },
+                                    "funcao_id": {
+                                        "description": "ID da função",
+                                        "type": "integer"
+                                    },
+                                    "comissao": {
+                                        "description": "Comissão da pessoa",
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "telefone": {
+                                        "description": "Telefone da pessoa",
+                                        "type": "string"
+                                    },
+                                    "data_admissao": {
+                                        "description": "Data de admissão da pessoa",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "data_desligamento": {
+                                        "description": "Data de desligamento da pessoa",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "empresa_id": {
+                                        "description": "ID da empresa",
+                                        "type": "integer"
+                                    },
+                                    "email": {
+                                        "description": "E-mail da pessoa",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "Senha da pessoa",
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "description": "Nome da pessoa",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Pessoa adicionada com sucesso"
+                    }
+                }
+            }
+        },
         "/api/pessoas/{id}": {
             "get": {
                 "tags": [

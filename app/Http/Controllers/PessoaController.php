@@ -34,6 +34,59 @@ class PessoaController extends Controller
 
     /**
      * @OA\Post(
+     *     path="/api/cadastro",
+     *     tags={"Pessoa"},
+     *     summary="Adiciona Primeiro cadastro",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(property="nome", type="string", description="Nome da pessoa"),
+     *                 @OA\Property(property="cpf", type="string", description="CPF da pessoa"),
+     *                 @OA\Property(property="funcao_id", type="integer", description="ID da função"),
+     *                 @OA\Property(property="comissao", type="float", description="Comissão da pessoa"),
+     *                 @OA\Property(property="telefone", type="string", description="Telefone da pessoa"),
+     *                 @OA\Property(property="data_admissao", type="date", description="Data de admissão da pessoa"),
+     *                 @OA\Property(property="data_desligamento", type="date", description="Data de desligamento da pessoa"),
+     *                 @OA\Property(property="empresa_id", type="integer", description="ID da empresa"),
+     *                 @OA\Property(property="email", type="string", description="E-mail da pessoa"),
+     *                 @OA\Property(property="password", type="string", description="Senha da pessoa"),
+     *                 @OA\Property(property="name", type="string", description="Nome da pessoa"),
+     *             ),
+     *         ),
+     *     ),
+     *     @OA\Response(response="201", description="Pessoa adicionada com sucesso")
+     * )
+     */
+    public function cadastro(Request $request)
+    {
+        $dados = $request->validate([
+            'nome' => 'required|string|max:255',
+            'cpf' => 'required|string|max:14',
+            'funcao_id' => 'required|integer',
+            'comissao' => 'required|numeric',
+            'telefone' => 'nullable|string|max:255',
+            'data_admissao' => 'required|date',
+            'data_desligamento' => 'nullable|date',
+            'empresa_id' => 'required|integer',
+            'name' => 'required|string|max:50',
+            'email' => 'required|email|unique:pessoa',
+            'password' => 'required|string|min:8', // Defina os requisitos da senha conforme necessário
+        ]);
+
+        // Adicione a senha criptografada aos dados antes de criar a pessoa
+        $dados['password'] = Hash::make($dados['password']);
+
+        $dados['funcao_id'] = 1;
+
+        $pessoa = $this->pessoaService->adicionarPessoa($dados);
+
+        return response()->json($pessoa, 201);
+    }
+
+    /**
+     * @OA\Post(
      *     path="/api/pessoas",
      *     tags={"Pessoa"},
      *     summary="Adiciona uma nova pessoa",

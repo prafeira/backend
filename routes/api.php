@@ -17,8 +17,9 @@ use App\Http\Controllers\AuthenticatedSessionController;
 |
 */
 
-// Rotas de Autenticação
+// Rotas de Autenticação/Cadastro
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+Route::post('/cadastro', [PessoaController::class, 'cadastro']);
 
 // Rota para obter a versão do Laravel
 Route::get('/version', function () {
