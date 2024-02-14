@@ -104,12 +104,12 @@ class EmpresaController extends Controller
     public function update(Request $request, $id)
     {
         $dados = $request->validate([
-            'nome' => 'string|max:255',
-            'cnpj_cpf' => 'string|max:14',
+            'nome' => 'required|string|max:255',
+            'cnpj_cpf' => 'required|string|max:14',
             'cor_tema' => 'nullable|string|max:255',
-            'data_cadastro' => 'date',
+            'data_cadastro' => 'required|date',
             'data_encerramento' => 'nullable|date',
-            'situacao_empresa' => 'nullable|string|max:255',
+            'situacao_empresa' => 'nullable|integer|max:255',
         ]);
 
         $empresa = $this->empresaService->editarEmpresa($id, $dados);
