@@ -78,7 +78,12 @@
                     "200": {
                         "description": "Sucesso"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/empresas": {

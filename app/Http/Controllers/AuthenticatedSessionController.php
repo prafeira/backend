@@ -62,6 +62,7 @@ class AuthenticatedSessionController extends Controller
      *     path="/api/logout",
      *     tags={"Autenticacao"},
      *     summary="Fazer logout",
+     *     security={{ "bearerAuth": {} }},
      *     @OA\Parameter(
      *         name="Authorization",
      *         in="header",

@@ -28,6 +28,8 @@ Route::get('/version', function () {
 // Rotas protegidas pelo middleware 'auth:sanctum'
 Route::middleware('auth:sanctum')->group(function () {
 
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
+
     // Rota para obter informações do usuário autenticado
     Route::get('/user', function (Request $request) {
         return $request->user();
