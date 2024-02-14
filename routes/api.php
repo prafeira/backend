@@ -64,5 +64,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::put('/{id}', [VendaController::class, 'update']);
         Route::delete('/{id}', [VendaController::class, 'destroy']);
         Route::get('/{id}', [VendaController::class, 'show']);
+        Route::get('/porPessoa/{idPessoa}', [VendaController::class, 'listarVendasPorPessoa']);
+        Route::get('/porEmpresa/{idEmpresa}', [VendaController::class, 'listarVendasPorEmpresa']);
     });
 });

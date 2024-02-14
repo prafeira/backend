@@ -165,4 +165,50 @@ class VendaController extends Controller
 
         return response()->json($venda, 200);
     }
+
+    /**
+     * @OA\Get(
+     *     path="/api/vendas/porPessoa/{idPessoa}",
+     *     tags={"Venda"},
+     *     summary="Retorna detalhes de uma venda específica por pessoa",
+     *     security={{ "bearerAuth": {} }},
+     *     @OA\Parameter(
+     *         name="idPessoa",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer"),
+     *         description="ID da Pessoa que tem venda"
+     *     ),
+     *     @OA\Response(response="200", description="Sucesso")
+     * )
+     */
+    public function listarVendasPorPessoa($idPessoa)
+    {
+        $venda = $this->vendaService->listarVendasPorPessoa($idPessoa);
+
+        return response()->json($venda, 200);
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/vendas/porEmpresa/{idEmpresa}",
+     *     tags={"Venda"},
+     *     summary="Retorna detalhes de uma venda específica por Empresa",
+     *     security={{ "bearerAuth": {} }},
+     *     @OA\Parameter(
+     *         name="idEmpresa",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer"),
+     *         description="ID da Empresa que tem venda"
+     *     ),
+     *     @OA\Response(response="200", description="Sucesso")
+     * )
+     */
+    public function listarVendasPorEmpresa($idEmpresa)
+    {
+        $venda = $this->vendaService->listarVendasPorEmpresa($idEmpresa);
+
+        return response()->json($venda, 200);
+    }
 }

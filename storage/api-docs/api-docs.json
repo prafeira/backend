@@ -830,6 +830,66 @@
                     }
                 ]
             }
+        },
+        "/api/vendas/porPessoa/{idPessoa}": {
+            "get": {
+                "tags": [
+                    "Venda"
+                ],
+                "summary": "Retorna detalhes de uma venda específica por pessoa",
+                "operationId": "9a6dcc9238b31b86c546f98ff76f86c5",
+                "parameters": [
+                    {
+                        "name": "idPessoa",
+                        "in": "path",
+                        "description": "ID da Pessoa que tem venda",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/vendas/porEmpresa/{idEmpresa}": {
+            "get": {
+                "tags": [
+                    "Venda"
+                ],
+                "summary": "Retorna detalhes de uma venda específica por Empresa",
+                "operationId": "b9fc6224b03402d4af27668f9a2e9cf6",
+                "parameters": [
+                    {
+                        "name": "idEmpresa",
+                        "in": "path",
+                        "description": "ID da Empresa que tem venda",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
         }
     },
     "components": {

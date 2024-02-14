@@ -40,6 +40,22 @@ class VendaService
         return $vendas;
     }
 
+    public function listarVendasPorPessoa($idPessoa)
+    {
+        // Lógica para obter a lista de vendas, se necessário
+        $vendas = Venda::where('pessoa_id', '=', $idPessoa)->get();
+
+        return $vendas;
+    }
+
+    public function listarVendasPorEmpresa($idEmpresa)
+    {
+        // Lógica para obter a lista de vendas, se necessário
+        $vendas = Venda::where('empresa_id', '=', $idEmpresa)->get();
+
+        return $vendas;
+    }
+
     public function obterDetalhesVenda($id)
     {
         // Lógica para obter detalhes específicos da venda, se necessário
