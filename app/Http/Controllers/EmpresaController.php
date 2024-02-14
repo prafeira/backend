@@ -48,7 +48,7 @@ class EmpresaController extends Controller
      *                 @OA\Property(property="cor_tema", type="string", description="Cor do tema da empresa"),
      *                 @OA\Property(property="data_cadastro", type="date", description="Data de cadastro da empresa"),
      *                 @OA\Property(property="data_encerramento", type="date", description="Data de encerramento da empresa"),
-     *                 @OA\Property(property="situacao_empresa", type="string", description="Situação da empresa"),
+     *                 @OA\Property(property="situacao_empresa", type="integer", description="Situação da empresa"),
      *             ),
      *         ),
      *     ),
@@ -63,7 +63,7 @@ class EmpresaController extends Controller
             'cor_tema' => 'nullable|string|max:255',
             'data_cadastro' => 'required|date',
             'data_encerramento' => 'nullable|date',
-            'situacao_empresa' => 'nullable|string|max:255',
+            'situacao_empresa' => 'nullable|integer|max:255',
         ]);
 
         $empresa = $this->empresaService->adicionarEmpresa($dados);
@@ -94,7 +94,7 @@ class EmpresaController extends Controller
      *                 @OA\Property(property="cor_tema", type="string", description="Cor do tema da empresa"),
      *                 @OA\Property(property="data_cadastro", type="date", description="Data de cadastro da empresa"),
      *                 @OA\Property(property="data_encerramento", type="date", description="Data de encerramento da empresa"),
-     *                 @OA\Property(property="situacao_empresa", type="string", description="Situação da empresa"),
+     *                 @OA\Property(property="situacao_empresa", type="integer", description="Situação da empresa"),
      *             ),
      *         ),
      *     ),
