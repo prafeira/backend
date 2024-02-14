@@ -319,6 +319,238 @@
                     }
                 ]
             }
+        },
+        "/api/pessoas": {
+            "get": {
+                "tags": [
+                    "Pessoa"
+                ],
+                "summary": "Retorna pessoas",
+                "operationId": "7c7d2c9decc48109bcd470035e629ecb",
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Pessoa"
+                ],
+                "summary": "Adiciona uma nova pessoa",
+                "operationId": "b72258a0649966eb7cb39a9fdc67bf4b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nome": {
+                                        "description": "Nome da pessoa",
+                                        "type": "string"
+                                    },
+                                    "cpf": {
+                                        "description": "CPF da pessoa",
+                                        "type": "string"
+                                    },
+                                    "funcao_id": {
+                                        "description": "ID da função",
+                                        "type": "integer"
+                                    },
+                                    "comissao": {
+                                        "description": "Comissão da pessoa",
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "telefone": {
+                                        "description": "Telefone da pessoa",
+                                        "type": "string"
+                                    },
+                                    "data_admissao": {
+                                        "description": "Data de admissão da pessoa",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "data_desligamento": {
+                                        "description": "Data de desligamento da pessoa",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "empresa_id": {
+                                        "description": "ID da empresa",
+                                        "type": "integer"
+                                    },
+                                    "email": {
+                                        "description": "E-mail da pessoa",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "Senha da pessoa",
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "description": "Nome da pessoa",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Pessoa adicionada com sucesso"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/pessoas/{id}": {
+            "get": {
+                "tags": [
+                    "Pessoa"
+                ],
+                "summary": "Retorna detalhes de uma pessoa específica",
+                "operationId": "9767860b5875b66fc3535a00d47aec2d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da pessoa a ser recuperada",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Pessoa"
+                ],
+                "summary": "Edita uma pessoa existente",
+                "operationId": "da7d1255c980a411d322994cbca98632",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da pessoa a ser editada",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nome": {
+                                        "description": "Nome da pessoa",
+                                        "type": "string"
+                                    },
+                                    "cpf": {
+                                        "description": "CPF da pessoa",
+                                        "type": "string"
+                                    },
+                                    "funcao_id": {
+                                        "description": "ID da função",
+                                        "type": "integer"
+                                    },
+                                    "comissao": {
+                                        "description": "Comissão da pessoa",
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "telefone": {
+                                        "description": "Telefone da pessoa",
+                                        "type": "string"
+                                    },
+                                    "data_admissao": {
+                                        "description": "Data de admissão da pessoa",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "data_desligamento": {
+                                        "description": "Data de desligamento da pessoa",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "empresa_id": {
+                                        "description": "ID da empresa",
+                                        "type": "integer"
+                                    },
+                                    "name": {
+                                        "description": "Nome da pessoa",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Pessoa editada com sucesso"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Pessoa"
+                ],
+                "summary": "Deleta uma pessoa",
+                "operationId": "6ac497549c4c86a2d7bbd144d43dffb3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da pessoa a ser deletada",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Pessoa deletada com sucesso"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
         }
     },
     "components": {

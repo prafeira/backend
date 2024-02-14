@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\PessoaController;
 use App\Http\Controllers\AuthenticatedSessionController;
 
 /*
@@ -28,10 +29,9 @@ Route::get('/version', function () {
 // Rotas protegidas pelo middleware 'auth:sanctum'
 Route::middleware('auth:sanctum')->group(function () {
 
+    // Rota para obter informações do usuário autenticado
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
     Route::get('/token', [AuthenticatedSessionController::class, 'getToken']);
-
-    // Rota para obter informações do usuário autenticado
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
@@ -46,9 +46,12 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     // Grupo de rotas relacionadas a Pessoas
-    Route::prefix('/pessoa')->group(function () {
-        Route::get('/', [EmpresaController::class, 'getPessoa']);
-        // Adicione outras rotas de Pessoa conforme necessário
+    Route::prefix('/pessoas')->group(function () {
+        Route::get('/', [PessoaController::class, 'index']);
+        Route::post('/', [PessoaController::class, 'store']);
+        Route::put('/{id}', [PessoaController::class, 'update']);
+        Route::delete('/{id}', [PessoaController::class, 'destroy']);
+        Route::get('/{id}', [PessoaController::class, 'show']);
     });
 
 });
