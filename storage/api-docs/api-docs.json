@@ -140,7 +140,7 @@
                                     },
                                     "situacao_empresa": {
                                         "description": "Situação da empresa",
-                                        "type": "string"
+                                        "type": "integer"
                                     }
                                 },
                                 "type": "object"
@@ -236,7 +236,7 @@
                                     },
                                     "situacao_empresa": {
                                         "description": "Situação da empresa",
-                                        "type": "string"
+                                        "type": "integer"
                                     }
                                 },
                                 "type": "object"
