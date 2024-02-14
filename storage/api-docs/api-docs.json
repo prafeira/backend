@@ -86,6 +86,42 @@
                 ]
             }
         },
+        "/api/token": {
+            "get": {
+                "tags": [
+                    "Autenticacao"
+                ],
+                "summary": "Obter token de acesso",
+                "description": "Retorna o token de acesso do usuário autenticado.",
+                "operationId": "3c82abdb36e99bc0e456c191d7b8a9d5",
+                "responses": {
+                    "200": {
+                        "description": "Token de acesso retornado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "access_token": {
+                                            "description": "Token de acesso",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/empresas": {
             "get": {
                 "tags": [

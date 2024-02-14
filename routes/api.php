@@ -29,6 +29,7 @@ Route::get('/version', function () {
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
+    Route::get('/token', [AuthenticatedSessionController::class, 'getToken']);
 
     // Rota para obter informações do usuário autenticado
     Route::get('/user', function (Request $request) {

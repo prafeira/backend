@@ -85,4 +85,38 @@ class AuthenticatedSessionController extends Controller
             return response()->json(['message' => 'User not authenticated'], 401);
         }
     }
+
+    /**
+     * Retorna o token de acesso do usuário autenticado.
+     *
+     * @OA\Get(
+     *     path="/api/token",
+     *     tags={"Autenticacao"},
+     *     summary="Obter token de acesso",
+     *     security={{ "bearerAuth": {} }},
+     *     @OA\Response(
+     *         response="200",
+     *         description="Token de acesso retornado com sucesso",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="access_token", type="string", description="Token de acesso"),
+     *         )
+     *     ),
+     *     @OA\Response(response="401", description="Não autorizado")
+     * )
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getToken(Request $request)
+    {
+        $user = $request->user();
+
+        if (!$user) {
+            return response()->json(['error' => 'Usuário não autenticado'], 401);
+        }
+
+        $token = $user->createToken('api-token')->plainTextToken;
+
+        return response()->json(['access_token' => $token]);
+    }
 }
